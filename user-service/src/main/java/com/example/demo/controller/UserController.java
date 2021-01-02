@@ -5,6 +5,7 @@ import com.example.demo.controller.model.UserDto;
 import com.example.demo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +18,15 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+    //@Value("${spring.datasource.url}")
+    //private String database;
+
     @Autowired
     private UserService userService;
 
     @GetMapping("/all")
     public List<UserDto> getUsers(){
+        //log.info("database url = " + database);
         return this.userService.getUsers();
     }
 
