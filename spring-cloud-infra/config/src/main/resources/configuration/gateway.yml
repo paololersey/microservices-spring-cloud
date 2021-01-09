@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          uri: lb:http://USER
+          predicates:
+            - Path=/burger-api/user/**
+          filters:
+            - HeaderFilter
+            - RewritePath=/burger-api/(?<segment>.*),/$\{segment}
+        - id: order
+          uri: lb:http://ORDER
+          predicates:
+            - Path=/burger-api/order/**
+          filters:
+            - HeaderFilter
+            - RewritePath=/burger-api/(?<segment>.*),/$\{segment}

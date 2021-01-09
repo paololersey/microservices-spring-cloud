@@ -1,21 +1,7 @@
 spring:
   application:
     name: gateway
-  cloud:
-    gateway:
-      routes:
-        - id: user
-          uri: lb:http://USER
-          predicates:
-            - Path=/burger-api/user/**
-          filters:
-            - RewritePath=/burger-api/(?<segment>.*),/$\{segment}
-        - id: order
-          uri: lb:http://ORDER
-          predicates:
-            - Path=/burger-api/order/**
-          filters:
-            - RewritePath=/burger-api/(?<segment>.*),/$\{segment}
+
 server:
   port: 8082
 
